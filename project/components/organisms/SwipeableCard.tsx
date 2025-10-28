@@ -111,7 +111,7 @@ export default function SwipeableCard({
 const styles = StyleSheet.create({
   cardContainer: {
     position: 'absolute',
-    width: SCREEN_WIDTH * 0.9,
+    width: SCREEN_WIDTH * 0.92,
   },
   overlay: {
     position: 'absolute',

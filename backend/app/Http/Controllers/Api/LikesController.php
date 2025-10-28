@@ -43,12 +43,14 @@ class LikesController extends Controller
     {
         $request->validate([
             'person_id' => 'required|exists:people,id',
-            'user_id' => 'required|exists:users,id',
         ]);
+
+        // Use authenticated user
+        $userId = $request->user()->id;
 
         $like = Like::updateOrCreate(
             [
-                'user_id' => $request->user_id,
+                'user_id' => $userId,
                 'person_id' => $request->person_id,
             ],
             [
@@ -105,12 +107,14 @@ class LikesController extends Controller
     {
         $request->validate([
             'person_id' => 'required|exists:people,id',
-            'user_id' => 'required|exists:users,id',
         ]);
+
+        // Use authenticated user
+        $userId = $request->user()->id;
 
         $like = Like::updateOrCreate(
             [
-                'user_id' => $request->user_id,
+                'user_id' => $userId,
                 'person_id' => $request->person_id,
             ],
             [
@@ -179,11 +183,10 @@ class LikesController extends Controller
      */
     public function likedPeople(Request $request)
     {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-        ]);
+        // Use authenticated user
+        $userId = $request->user()->id;
 
-        $likedPeople = Like::where('user_id', $request->user_id)
+        $likedPeople = Like::where('user_id', $userId)
             ->where('is_liked', true)
             ->with('person')
             ->paginate(10);

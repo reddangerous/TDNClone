@@ -4,8 +4,8 @@ import { Person } from '../../types/person';
 import { MapPin } from 'lucide-react-native';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
-const CARD_WIDTH = SCREEN_WIDTH * 0.9;
-const CARD_HEIGHT = CARD_WIDTH * 1.4;
+const CARD_WIDTH = SCREEN_WIDTH ;
+const CARD_HEIGHT = SCREEN_WIDTH;
 
 interface PersonCardProps {
   person: Person;
